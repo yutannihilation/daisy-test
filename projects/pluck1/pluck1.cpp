@@ -15,14 +15,15 @@ Switch button1;
 static void AudioCallback(float *in, float *out, size_t size)
 {
     float sig;
-    float trig, note, decay; // Pluck Vars
+    float trig; // Pluck Vars
 
     button1.Debounce();
 
-    trig = 0.0f;
     if (button1.RisingEdge())
     {
         trig = 1.0f;
+    } else {
+        trig = 0.0f;
     }
 
     synth.SetDecay(seed.adc.GetFloat(0));
